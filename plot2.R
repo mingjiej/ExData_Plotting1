@@ -1,0 +1,7 @@
+elec <- read.table("/Users/user/Downloads/household_power_consumption.txt", stringsAsFactors = FALSE, header = TRUE, sep = ";")
+elec[,1] <- as.Date(elec[,1], format = "%d/%m/%Y")
+elec[,1] <- paste(elec[,1], elec[,2])
+elec[,1] <- as.POSIXct(elec[,1])
+plot(elec[,3]~elec[,1], xlab = "", ylab = "Global active Power (kilowatts)", type = "l")
+dev.copy(png, file="plot2.png", width=480, height=480)
+dev.off()
